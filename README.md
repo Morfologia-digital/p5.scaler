@@ -3,7 +3,7 @@ Auto scales sketches in order to fit the browser's inner dimensions.
 
 ## Get Started
 
-- [Download]() the p5.scaler.js file to your existing p5.js project
+- [Download](https://raw.githubusercontent.com/Morfologia-digital/p5.scaler/main/p5.scaler.js) the p5.scaler.js file to your existing p5.js project
 - Link the file in your index.html. It should look something like this:
 ```
     <script src="p5.min.js"></script>
