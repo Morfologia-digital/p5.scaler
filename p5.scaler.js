@@ -8,6 +8,7 @@ p5.prototype.createAdaptiveCanvas = function (width, height, fitScreen) {
 function createAdaptiveGraphics(width,height,bufferRenderer) {
   let newBuffer = new AdaptiveBuffer(createGraphics(width,height),bufferRenderer);
   scaler.addBuffer(newBuffer);
+  scaler.adjust();
   return newBuffer;
 }
 
