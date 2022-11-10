@@ -4,9 +4,20 @@ p5.prototype.createAdaptiveCanvas = function (width, height, fitScreen) {
   scaler = new Scaler(width, height, fitScreen === undefined ? true : false);
   return c;
 };
+
+function createAdaptiveGraphics(width,height,bufferRenderer) {
+  let newBuffer = new AdaptiveBuffer(createGraphics(width,height),bufferRenderer);
+  scaler.addBuffer(newBuffer);
+  return newBuffer;
+}
+
 p5.prototype.updateAdaptiveCanvas = function () {
   if (scaler !== undefined) scale(scaler.scale());
+  // if (scaler !== undefined) { 
+  //   scaler.adjust();
+  // }
 };
+
 window.addEventListener(
   'resize',
   function (event) {
@@ -16,18 +27,40 @@ window.addEventListener(
 );
 p5.prototype.registerMethod('pre', p5.prototype.updateAdaptiveCanvas);
 
+class AdaptiveBuffer {
+  
+  #graphics;
+  #renderer;
+  
+  constructor(graphics,renderer) {
+    this.#graphics = graphics;
+    this.#renderer = renderer;
+  }
+
+  reRender() {
+    this.#renderer(this.#graphics);
+  }
+
+  graphics() {
+    return this.#graphics;
+  }
+
+}
+
 class Scaler {
   #width;
   #height;
   #ratio;
   #scale;
   #fitScreen;
+  #buffers;
 
   constructor(w, h, fitScreen) {
     this.#width = w;
     this.#height = h;
     this.#ratio = this.#width / this.#height;
     this.#fitScreen = fitScreen;
+    this.#buffers = [];
     if (!this.#fitScreen) return;
     this.scaleCanvas();
   }
@@ -63,6 +96,7 @@ class Scaler {
     }
     this.#scale = scaledWidth / this.#width;
     resizeCanvas(scaledWidth, scaledHeight);
+    this.adjust();
   }
 
   width() {
@@ -76,4 +110,16 @@ class Scaler {
   scale() {
     return this.#scale;
   }
+
+  adjust() {
+   for (let b = 0; b < this.#buffers.length; b++) {
+      this.#buffers[b].graphics().pixelDensity(Math.ceil(this.#scale));
+      this.#buffers[b].reRender();
+   }
+  }
+
+  addBuffer(pg) {
+    this.#buffers.push(pg);
+  }
+  
 }
