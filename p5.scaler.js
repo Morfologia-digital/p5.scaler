@@ -12,11 +12,14 @@ function createAdaptiveGraphics(width,height,bufferRenderer) {
   return newBuffer;
 }
 
+function addAdaptiveGraphics(graphics, bufferRenderer) {
+  let newBuffer = new AdaptiveBuffer(graphics,bufferRenderer);
+  scaler.addBuffer(newBuffer);
+  scaler.adjust();  
+}
+
 p5.prototype.updateAdaptiveCanvas = function () {
   if (scaler !== undefined) scale(scaler.scale());
-  // if (scaler !== undefined) { 
-  //   scaler.adjust();
-  // }
 };
 
 window.addEventListener(
