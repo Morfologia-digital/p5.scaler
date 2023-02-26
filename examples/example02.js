@@ -1,8 +1,9 @@
 let frame = 0;
 
 function setup() {
-  createAdaptiveCanvas(2000, 2000);
-  strokeWeight(10);
+  createAdaptiveCanvas(100, 100, false);
+  strokeWeight(1);
+  scaler.scaleCanvasTo(50);
 }
 
 function draw() {

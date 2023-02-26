@@ -5,17 +5,20 @@ p5.prototype.createAdaptiveCanvas = function (width, height, fitScreen) {
   return c;
 };
 
-function createAdaptiveGraphics(width,height,bufferRenderer) {
-  let newBuffer = new AdaptiveBuffer(createGraphics(width,height),bufferRenderer);
+function createAdaptiveGraphics(width, height, bufferRenderer) {
+  let newBuffer = new AdaptiveBuffer(
+    createGraphics(width, height),
+    bufferRenderer
+  );
   scaler.addBuffer(newBuffer);
   scaler.adjust();
   return newBuffer;
 }
 
 function addAdaptiveGraphics(graphics, bufferRenderer) {
-  let newBuffer = new AdaptiveBuffer(graphics,bufferRenderer);
+  let newBuffer = new AdaptiveBuffer(graphics, bufferRenderer);
   scaler.addBuffer(newBuffer);
-  scaler.adjust();  
+  scaler.adjust();
 }
 
 p5.prototype.updateAdaptiveCanvas = function () {
@@ -32,11 +35,10 @@ window.addEventListener(
 p5.prototype.registerMethod('pre', p5.prototype.updateAdaptiveCanvas);
 
 class AdaptiveBuffer {
-  
   #graphics;
   #renderer;
-  
-  constructor(graphics,renderer) {
+
+  constructor(graphics, renderer) {
     this.#graphics = graphics;
     this.#renderer = renderer;
   }
@@ -48,7 +50,6 @@ class AdaptiveBuffer {
   graphics() {
     return this.#graphics;
   }
-
 }
 
 class Scaler {
@@ -116,14 +117,13 @@ class Scaler {
   }
 
   adjust() {
-   for (let b = 0; b < this.#buffers.length; b++) {
+    for (let b = 0; b < this.#buffers.length; b++) {
       this.#buffers[b].graphics().pixelDensity(Math.ceil(this.#scale));
       this.#buffers[b].reRender();
-   }
+    }
   }
 
   addBuffer(pg) {
     this.#buffers.push(pg);
   }
-  
 }
