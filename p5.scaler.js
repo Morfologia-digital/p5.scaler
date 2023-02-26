@@ -126,4 +126,13 @@ class Scaler {
   addBuffer(pg) {
     this.#buffers.push(pg);
   }
+
+  mouseX() {
+    return mouseX / this.#scale;
+  }
+
+  mouseY() {
+    return mouseY / this.#scale;
+  }
+
 }
