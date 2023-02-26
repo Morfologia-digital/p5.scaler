@@ -15,7 +15,6 @@ function setup() {
   createAdaptiveCanvas(500, 500);
   strokeWeight(10);
 
-  let r = 100;
   let a = 100;
   let b = 100;
   let n = 0.5;
@@ -37,8 +36,6 @@ function setup() {
   }
 
   pg.reRender();
-
-  console.log(pg.graphics().drawingContext);
 
 }
 
