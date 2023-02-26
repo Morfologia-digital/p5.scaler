@@ -45,6 +45,7 @@ If your sketch has *p5.Renderer* objects (they are VERY useful as buffers), you 
       scaler.height() / 2,
       renderBuffer
     );
+    pg.reRender();
   }
 
   // specification of the function that will render the buffer
@@ -60,7 +61,7 @@ If your sketch has *p5.Renderer* objects (they are VERY useful as buffers), you 
   }
 
 ```
-- make sure you call `pg.reRender()` once in the the `setup()` function
+- make sure you call `pg.reRender()` once just after instantiating the buffer.
 
 ## Task list :seedling:
 - [ ] **We strongly believe the features added by p5.scaler.js could fit as standard code for the p5.js library. Maybe you can help us by suggesting that to the authors [here](https://github.com/processing/p5.js)**;
