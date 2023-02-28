@@ -135,4 +135,12 @@ class Scaler {
     return mouseY / this.#scale;
   }
 
+  pmouseX() {
+    return pmouseX / this.#scale;
+  }
+
+  pmouseY() {
+    return pmouseY / this.#scale;
+  }  
+
 }
