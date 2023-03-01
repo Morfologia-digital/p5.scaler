@@ -1,0 +1,2 @@
+# command to minify the lib code
+uglifyjs p5.scaler.js --compress --mangle-props reserved=['scaler','p5','createAdaptiveCanvas','registerMethod','components','pixelDensity','reRender','graphics','scaleCanvasTo','mouseX','mouseY','pmouseX','pmouseY'] -o p5.scaler.min.js

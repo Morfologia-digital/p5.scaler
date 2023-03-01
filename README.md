@@ -1,7 +1,8 @@
+![p5.scaler.js](assets/preview-image.jpeg)
 # p5.scaler
 Auto scales sketches in order to fit the browser's inner dimensions.
 
-## Get started :beginner:
+## Getting started :beginner:
 
 - [Download](https://raw.githubusercontent.com/Morfologia-digital/p5.scaler/main/p5.scaler.js) the p5.scaler.js file to your existing p5.js project
 - Link the file in your index.html. It should look something like this:
@@ -16,6 +17,25 @@ Auto scales sketches in order to fit the browser's inner dimensions.
   - *fitScreen* - whether or not the canvas should auto scale to fit the screen. Default value is *true*. You may want to set it to *false* during development
 - From now on, if you need to retrieve the width/height of your canvas (originally done through the `width` & `height` global properties), you should use `scaler.width()` and `scaler.height()`
 - From now on, if you need to retrieve mouseX,mouseY (originally done through the `mouseX` & `mouseY` global properties), you should use `scaler.mouseX()` and `scaler.mouseY()`
+- From now on, if you need to retrieve pmouseX,pmouseY (originally done through the `pmouseX` & `pmouseY` global properties), you should use `scaler.pmouseX()` and `scaler.pmouseY()`
+
+Here is a simple example:
+```
+function setup() {
+  createAdaptiveCanvas(500, 500);
+  noStroke();
+}
+
+function draw() {
+  background(200);
+
+  fill(0,0,255);
+  ellipse(scaler.width() / 2, scaler.height() / 2, 100, 100);
+
+  fill(255,0,0);
+  ellipse(scaler.mouseX(),scaler.mouseY(),50,50);
+}
+```
 
 ## Factor scaling :art:
 You may want to scale your canvas to a factor. This may be particularly useful if you want to generate files for printing. In order to do that, you just need to follow these two steps:
@@ -29,7 +49,7 @@ scaler.scaleCanvasTo(scaleFactor);
 
 ## Scaling p5.Renderer objects :tv:
 If your sketch has *p5.Renderer* objects (they are VERY useful as buffers), you will need to tell *p5.scaler* about them. Just complete the following steps:
-- instead of calling the `createGraphics();` function, use `createAdaptiveGraphics()`. This function has three arguments:
+- instead of calling the `createGraphics()` function, use `createAdaptiveGraphics()`. This function has three arguments:
   - *width* - the original width of your *p5.Renderer*, in pixels
   - *height* - the original height of your *p5.Renderer*, in pixels
   - *bufferRenderer* - a function that receives a regular *p5.Renderer* as a parameter and is responsible for the actual drawing of that buffer (*refreshing the buffer* might be the accurate idea here). So, everytime the canvas is resized, this function is called to re-draw your *p5.Renderer*
@@ -61,7 +81,26 @@ If your sketch has *p5.Renderer* objects (they are VERY useful as buffers), you 
   }
 
 ```
-- make sure you call `pg.reRender()` once just after instantiating the buffer.
+- make sure you call `pg.reRender()` once just after instantiating the buffer with `createAdapativeGraphics()`.
+
+## Methods
+### Global
+| Method  | Type |  Required  | Description |
+| ------------- | ------------- | ------------- | ------------- |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+
+### The `scaler` object
+| Method  | Type |  Required  | Description |
+| ------------- | ------------- | ------------- | ------------- |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+
+## Examples
+| Example  | Description |
+| ------------- |  ------------- |
+| Content Cell  |  Content Cell  |
+| Content Cell  |  Content Cell  |
 
 ## Task list :seedling:
 - [ ] **We strongly believe the features added by p5.scaler.js could fit as standard code for the p5.js library. Maybe you can help us by suggesting that to the authors [here](https://github.com/processing/p5.js)**;
