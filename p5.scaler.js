@@ -1,7 +1,7 @@
 p5.prototype.scaler = undefined;
 p5.prototype.createAdaptiveCanvas = function (width, height, fitScreen) {
   let c = createCanvas(width, height);
-  scaler = new Scaler(width, height, fitScreen === undefined ? true : false);
+  scaler = new Scaler(width, height, fitScreen === undefined ? true : fitScreen);
   return c;
 };
 
