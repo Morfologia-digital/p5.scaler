@@ -94,8 +94,9 @@ If your sketch has _p5.Renderer_ objects (they are VERY useful as buffers), you 
 
 ```
 
-- make sure you call `pg.reRender()` once just after instantiating the buffer with `createAdapativeGraphics()`.
-- alternatively, you can use `addAdaptiveGraphics()` to register a previously created `p5.Renderer` object
+- make sure you call `pg.reRender()` once just after instantiating the buffer with `createAdapativeGraphics()`
+- to print the buffer content, please use the `pg.graphics()` method
+- alternatively, you can use `addAdaptiveGraphics()` to register a previously created `p5.Renderer` object.
 
 ## Methods
 
@@ -154,5 +155,8 @@ The `/examples` folder in this repository contains the following examples:
 ## Task list :seedling:
 
 - [ ] **We strongly believe the features added by p5.scaler.js could fit as standard code for the p5.js library. Maybe you can help us by suggesting that to the authors [here](https://github.com/processing/p5.js)**;
+- [ ] Add compability with the p5 WEBGL renderer;
+- [ ] Add the option to unlock the original ratio, making the canvas fit the entire space in both width and height;
+- [ ] Make the adaptive canvas use as reference its container, and not the browser window width/height (i.e., a div that contains the canvas);
 - [ ] Add log messages to the console when something is wrong, to help programmers;
 - [x] Add support to mouseX and mouseY properties.They should be used as `scaler.mouseX()` and `scaler.mouseY()`;
