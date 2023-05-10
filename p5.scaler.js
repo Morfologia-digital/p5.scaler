@@ -1,7 +1,11 @@
 p5.prototype.scaler = undefined;
 p5.prototype.createAdaptiveCanvas = function (width, height, fitScreen) {
   let c = createCanvas(width, height);
-  scaler = new Scaler(width, height, fitScreen === undefined ? true : fitScreen);
+  scaler = new Scaler(
+    width,
+    height,
+    fitScreen === undefined ? true : fitScreen
+  );
   return c;
 };
 
@@ -80,15 +84,17 @@ class Scaler {
         let paddingX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
         let paddingY = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
 
-        let borderX = parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth);
-        let borderY = parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth);
+        let borderX =
+          parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth);
+        let borderY =
+          parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth);
 
         scaleToWidth = this.#container.offsetWidth - paddingX - borderX;
         scaleToHeight = this.#container.offsetHeight - paddingY - borderY;
       } else {
         scaleToWidth = window.innerWidth;
         scaleToHeight = window.innerHeight;
-      }         
+      }
       this._doScale(scaleToWidth, scaleToHeight);
     }
   }
@@ -164,6 +170,5 @@ class Scaler {
 
   pmouseY() {
     return pmouseY / this.#scale;
-  }  
-
+  }
 }
