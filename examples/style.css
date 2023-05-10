@@ -6,3 +6,12 @@ html, body {
   canvas {
     display: block;
   }
+
+  #a_container {
+    background: black;
+    border: 5px solid darkgrey;
+    height: 500px;
+    padding: 50px;
+    margin: 10px auto;
+    width: 20%;
+  }

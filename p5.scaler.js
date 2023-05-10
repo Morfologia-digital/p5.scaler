@@ -58,6 +58,7 @@ class Scaler {
   #ratio;
   #scale;
   #fitScreen;
+  #container;
   #buffers;
 
   constructor(w, h, fitScreen) {
@@ -72,7 +73,23 @@ class Scaler {
 
   scaleCanvas() {
     if (this.#fitScreen) {
-      this._doScale(window.innerWidth, window.innerHeight);
+      let scaleToWidth, scaleToHeight;
+      if (this.#container !== undefined) {
+        let cs = getComputedStyle(this.#container);
+
+        let paddingX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+        let paddingY = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+
+        let borderX = parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth);
+        let borderY = parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth);
+
+        scaleToWidth = this.#container.offsetWidth - paddingX - borderX;
+        scaleToHeight = this.#container.offsetHeight - paddingY - borderY;
+      } else {
+        scaleToWidth = window.innerWidth;
+        scaleToHeight = window.innerHeight;
+      }         
+      this._doScale(scaleToWidth, scaleToHeight);
     }
   }
 
@@ -125,6 +142,12 @@ class Scaler {
 
   addBuffer(pg) {
     this.#buffers.push(pg);
+  }
+
+  setCanvasContainer(container) {
+    this.#container = container;
+    this.scaleCanvas();
+    console.log(this.#container.offsetWidth);
   }
 
   mouseX() {
