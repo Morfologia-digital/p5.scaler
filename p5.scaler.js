@@ -153,7 +153,6 @@ class Scaler {
   setCanvasContainer(container) {
     this.#container = container;
     this.scaleCanvas();
-    console.log(this.#container.offsetWidth);
   }
 
   mouseX() {
