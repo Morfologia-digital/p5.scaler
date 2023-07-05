@@ -157,6 +157,6 @@ The `/examples` folder in this repository contains the following examples:
 - [ ] **We strongly believe the features added by p5.scaler.js could fit as standard code for the p5.js library. Maybe you can help us by suggesting that to the authors [here](https://github.com/processing/p5.js)**;
 - [ ] Add compability with the p5 WEBGL renderer;
 - [ ] Add the option to unlock the original ratio, making the canvas fit the entire space in both width and height;
-- [ ] Make the adaptive canvas use as reference its container, and not the browser window width/height (i.e., a div that contains the canvas);
+- [x] Make the adaptive canvas use as reference its container, and not the browser window width/height (i.e., a div that contains the canvas);
 - [ ] Add log messages to the console when something is wrong, to help programmers;
 - [x] Add support to mouseX and mouseY properties.They should be used as `scaler.mouseX()` and `scaler.mouseY()`;
