@@ -2,8 +2,7 @@
 
 # p5.scaler
 
-Auto scales sketches in order to fit the browser's inner dimensions.
-
+Auto scales sketches in order to fit the browser's inner dimensions. Since v1.2.0, p5.scaler makes the sketch auto-fit its container element (a div tag, for example).
 ## Getting started :beginner:
 
 - [Download](https://raw.githubusercontent.com/Morfologia-digital/p5.scaler/main/p5.scaler.js) the p5.scaler.js file to your existing p5.js project
@@ -151,6 +150,7 @@ The `/examples` folder in this repository contains the following examples:
 | Example 02 | shows how to force the scaling of the canvas to a factor |
 | Example 03 | shows how to use p5.Renderer object as adaptive buffers  |
 | Example 04 | show the usage of mouseX and mouseY properties           |
+| Example 05 | show the usage of canvas inside of a div                 |
 
 ## Task list :seedling:
 
