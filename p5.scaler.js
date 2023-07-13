@@ -30,13 +30,13 @@ p5.prototype.updateAdaptiveCanvas = function () {
 };
 
 window.addEventListener(
-  'resize',
+  "resize",
   function (event) {
     scaler.scaleCanvas();
   },
   true
 );
-p5.prototype.registerMethod('pre', p5.prototype.updateAdaptiveCanvas);
+p5.prototype.registerMethod("pre", p5.prototype.updateAdaptiveCanvas);
 
 class AdaptiveBuffer {
   #graphics;
@@ -141,7 +141,11 @@ class Scaler {
 
   adjust() {
     for (let b = 0; b < this.#buffers.length; b++) {
-      this.#buffers[b].graphics().pixelDensity(Math.ceil(this.#scale));
+      this.#buffers[b]
+        .graphics()
+        .pixelDensity(
+          max(Math.ceil(this.#scale) * displayDensity() * 1.2, displayDensity())
+        );
       this.#buffers[b].reRender();
     }
   }
