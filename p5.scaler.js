@@ -115,7 +115,7 @@ class Scaler {
         scaledWidth = h * this.#ratio;
       }
     } else {
-      scaledHeight = window.innerHeight;
+      scaledHeight = h;
       scaledWidth = h * this.#ratio;
       if (scaledWidth > w) {
         scaledWidth = w;
