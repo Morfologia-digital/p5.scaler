@@ -103,6 +103,14 @@ class Scaler {
     this._doScale(this.#width * s, this.#height * s);
   }
 
+  scaleCanvasToWidth(newWidth) {
+    this._doScale(newWidth, this.#height * (newWidth/this.#width));
+  }
+
+  scaleCanvasToHeight(newHeight) {
+    this._doScale(this.#width * (newHeight/this.#height), newHeight);
+  }
+
   _doScale(w, h) {
     let scaledWidth, scaledHeight;
     let diffWidth = Math.abs(this.#width - w);
